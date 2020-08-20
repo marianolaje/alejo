@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const theme = createMuiTheme({
+
     typography: {
         fontFamily: [
             '"Lato"',
