@@ -224,6 +224,7 @@ const Formulario = ({compraReal}) => {
                         onClick={sendMessage}
                     > Comprar
                     </Button>
+                    <p style={{color: 'red', fontSize: 10}}>Los pedidos son entregados el dia Lunes de cada semana</p>
                 </form>
             </ThemeProvider>
         </Container>

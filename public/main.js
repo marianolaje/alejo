@@ -44,10 +44,13 @@ const getInformation = () => {
                 post = {
                     id: Math.floor(Math.random() * 100000000000),
                     title: metadata.title,
+                    subtitle: metadata.subtitle ? metadata.subtitle : null,
                     imageOne: metadata.imageOne ? metadata.imageOne : null,
                     price: metadata.price,
                     url: metadata.url,
                     content: content ? content : "No content given",
+                    notaFinal: metadata.notaFinal ? metadata.notaFinal : null,
+                    score: metadata.score
                 }
                 informationList.push(post)
                 ilist.push(i)

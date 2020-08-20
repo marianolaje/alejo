@@ -51,7 +51,7 @@ const HeaderComp = ({setInfoBool}) => {
     const history = useHistory()
 
     const goBackButton = () => {
-        history.go(-1)
+        history.push('/')
         setInfoBool(false)
     }
 

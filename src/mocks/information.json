@@ -1,38 +1,35 @@
 [
   {
-    "id": 82405955647,
-    "title": "Bolson Medio",
-    "icon": null,
-    "imageOne": null,
-    "price": "600",
-    "url": "/bolson-completo",
-    "content": "(2kg) Papines, (5kg) Brocoli, (2kg) Paprika"
-  },
-  {
-    "id": 15972396165,
+    "id": 88289589469,
     "title": "Bolsón Completo",
-    "icon": "/images/pagos.png",
-    "imageOne": "/images/socio.png",
-    "price": "900",
-    "url": "/bolson-medioDos",
-    "content": "(5kg) Papas, (2kg) Zanahoria, (500g) Lechuga, (1kg) Milanesas"
+    "subtitle": "nulasel",
+    "imageOne": "/images/bolsones-completo.png",
+    "price": "650",
+    "url": "/bolsón-completo",
+    "content": "1 RÚCULA, 1 kg. TOMATE, 500 gr. LIMÓN, 1 kg. MANDARINA, 1 kg. BANANA, 1.5 kg. NARANJA, 500 gr. MANZANA, 500 gr. PERA, 1.5 kg. PAPA, 500 gr. BATATA, 500 gr. CEBOLLA, 500 gr. ZANAHORIA, 1 ZAP. ANQUITO, , Bolsón de 10 kg. aproximadamente., Foto a modo de ejemplo ya que cambia todas las semanas su contenido.",
+    "notaFinal": "nulasel",
+    "score": "7"
   },
   {
-    "id": 824052955647,
-    "title": "Bolson Medio",
-    "icon": null,
+    "id": 73365885653,
+    "title": "Bolsón Frutas",
+    "subtitle": null,
     "imageOne": null,
-    "price": "600",
-    "url": "/bolson-completoDos",
-    "content": "(2kg) Papines, (5kg) Brocoli, (2kg) Paprika"
+    "price": "450",
+    "url": "/bolsón-frutas",
+    "content": "1 kg. TOMATE, 500 gr. LIMÓN, 1 kg. MANDARINA, 1 kg. BANANA, 1.5 kg. NARANJA, 500 gr. MANZANA, 500 gr. PERA",
+    "notaFinal": null,
+    "score": "7"
   },
   {
-    "id": 159723936165,
-    "title": "Bolsón Completo",
-    "icon": "/images/pagos.png",
-    "imageOne": "/images/socio.png",
-    "price": "900",
-    "url": "/bolson-medio",
-    "content": "(5kg) Papas, (2kg) Zanahoria, (500g) Lechuga, (1kg) Milanesas"
+    "id": 61586246103,
+    "title": "Bolsón Power",
+    "subtitle": null,
+    "imageOne": "/images/bolsones-power.png",
+    "price": "850",
+    "url": "/bolsón-power",
+    "content": " BRÓCOLI, 1 RÚCULA, 250 gr. T. CHERRY, 1 kg. TOMATE, 500 gr. LIMÓN, 1 kg. MANDARINA, 1 kg. BANANA, 1.5 kg. NARANJA, 500 gr. MANZANA, 500 gr. PERA, 1.5 kg. PAPA, 500 gr. BATATA, 1 kg. CEBOLLA, 500 gr. ZANAHORIA, 1 ZAP. ANQUITO, 1/2 ZAP. BRASILERO",
+    "notaFinal": null,
+    "score": "7"
   }
 ]

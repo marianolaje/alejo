@@ -13,7 +13,12 @@ collections:
     slug: "{{title}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - {label: "Titulo", name: "title", widget: "string"}
+      - {label: "Subtitulo", name: "subtitle", widget: "string", required: false}
       - {label: "Imagen 1", name: "imageOne", widget: "image", required: false}
       - {label: "Precio", name: "price", widget: "number"}
       - {label: "URL", name: "url", widget: "string"}
       - {label: "Ingredientes", name: "body", widget: "markdown"}
+      - {label: "Nota Final", name: "notaFinal", widget: "string", required: false}
+      - {label: "Relevancia (del 0 al 9)", name: "score", widget: "number", min: 0, max: 9}
+
+

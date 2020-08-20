@@ -75,7 +75,6 @@ const Informacion = ({infoData, setCompra, compra}) => {
     const [info, setInfo] = useState([])
     const [arrayInfo, setArrayInfo] = useState([])
 
-
     const listInfo = () => {
         let result = info.content.split(',')
         setArrayInfo(result)
@@ -107,9 +106,13 @@ const Informacion = ({infoData, setCompra, compra}) => {
                     {
                         info &&
                         (
+                            <div>
+                                <h5>{info.subtitle}</h5>
                                 <ul>
                                     {listComponent()}
                                 </ul>
+                                <h5>{info.notaFinal}</h5>
+                            </div>
                         )
                     }
 

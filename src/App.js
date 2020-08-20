@@ -57,14 +57,12 @@ const useStyles = makeStyles(theme => createStyles({
         },
     },
     margenBot: {
-        marginBottom: 130
+        marginBottom: 140
     }
 
 }));
 
 function App() {
-    const classes = useStyles()
-
     const classes = useStyles()
 
     const [infoData, setInfoData] = useState([])
@@ -84,6 +82,15 @@ function App() {
         }
         setCompra(a)
     }, [infoData])
+
+    infoData.sort(function(a, b){
+        let nameA=a.score.toLowerCase(), nameB=b.score.toLowerCase()
+        if (nameA < nameB) //sort string ascending
+            return -1
+        if (nameA > nameB)
+            return 1
+        return 0 //default return value (no sorting)
+    })
 
     useEffect(()=>{
         setTimeout(function(){
