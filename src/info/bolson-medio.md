@@ -4,7 +4,7 @@ subtitle: Acá va a ir el subtitulo, antes del listado de información
 imageOne: /images/bolsones-completo.png
 price: 650
 url: /bolsón-completo
-notaFinal: Bolsón de 10 kg. aproximadamente., Foto a modo de ejemplo ya que
+notaFinal: Bolsón de 10 kg. aproximadamente. Foto a modo de ejemplo ya que
   cambia todas las semanas su contenido.
 score: 7
 ---
