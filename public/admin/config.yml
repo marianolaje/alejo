@@ -18,7 +18,7 @@ collections:
       - {label: "Precio", name: "price", widget: "number"}
       - {label: "URL", name: "url", widget: "string"}
       - {label: "Ingredientes", name: "body", widget: "markdown"}
-      - {label: "Nota Final", name: "notaFinal", widget: "string", required: false}
+      - {label: "Nota Final", name: "notaFinal", widget: "markdown", required: false}
       - {label: "Relevancia (del 0 al 9)", name: "score", widget: "number", min: 0, max: 9}
 
 
