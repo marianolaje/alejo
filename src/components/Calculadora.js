@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: 20,
         fontSize: 30,
         fontWeight: 900,
-        color: '#1B998B'
+        color: 'black'
     },
 }));
 
@@ -62,7 +62,7 @@ const theme = createMuiTheme({
     },
     palette: {
         primary: {
-            main: '#1B998B'
+            main: '#000000'
         },
         secondary: {
             main: '#011238',

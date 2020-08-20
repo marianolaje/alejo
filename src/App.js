@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => createStyles({
         display: 'flex',
         flexFlow: 'column nowrap',
         alignItems: 'center',
-        backgroundColor: 'floralwhite',
+        backgroundColor: '#D90202',
         margin: '16px 0',
         width: 320
     },

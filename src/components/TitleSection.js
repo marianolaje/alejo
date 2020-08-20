@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
         width: '90vw',
         textAlign: 'center',
         display: 'inline-block',
-        color: '#1B998B',
+        color: 'white',
     },
     containerDiv: {
         marginTop: 100,
-        backgroundColor: '#2E294E',
+        backgroundColor: '#D90202',
         maxWidth: 660,
         marginLeft: "auto",
         marginRight: "auto",
