@@ -56,10 +56,14 @@ const useStyles = makeStyles(theme => createStyles({
             marginTop: 64
         },
     },
+    margenBot: {
+        marginBottom: 130
+    }
 
 }));
 
 function App() {
+    const classes = useStyles()
 
     const [infoData, setInfoData] = useState([])
     const [infoRow, setInfoRow] = useState([])
@@ -87,7 +91,7 @@ function App() {
 
 
     return (
-        <div>
+        <div className={classes.margenBot}>
             <Router >
                 <HeaderComp
                     setInfoBool={setInfoBool}
