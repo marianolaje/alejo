@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import {ThemeProvider} from "@material-ui/styles";
 import Error from './Error'
 import MenuItem from "@material-ui/core/MenuItem";
-
+import Pedidos from '../mocks/pedidos.json'
 
 const theme = createMuiTheme({
     typography: {
@@ -95,18 +95,22 @@ const Formulario = ({compraReal}) => {
         })
     }
 
-    console.log(search)
+    function addInfoToJsonFile (msg) {
+        let obj = {
+            table: []
+        };
+        obj.table.push({msg});
+        let json = JSON.stringify(obj);
+        let fs = require('fs');
+        fs.writeFile('../mocks/pedidos.json', json);
 
+    }
 
     function sendMessage () {
         let pedido = ''
         pedido = compraReal.map(text => (pedido.concat(text.cuantity).concat(' del ').concat(text.title).concat(', ')))
         let num = '5493513088140'
-        let msg = `Buenos dias, soy ${search.nombre} ${search.apellido}. 
-                    Quisiera pedir ${pedido.join('')}.
-                    Vivo en ${search.direccion}, y pagaré con ${search.formaPago}.
-                    ${search.comentario ? search.comentario : ''} Muchas gracias!
-                     (mi mail es ${search.email})`
+        let msg = `Buenos dias, soy ${search.nombre} ${search.apellido}. Quisiera pedir ${pedido.join('')}. Vivo en ${search.direccion}, y pagaré con ${search.formaPago}. ${search.comentario ? search.comentario : ''} Muchas gracias! (mi mail es ${search.email})`
 
 
         if (search.email.trim() === '') {
@@ -137,6 +141,9 @@ const Formulario = ({compraReal}) => {
         setError(false)
 
         let win = window.open(`https://wa.me/${num}?text=${msg}`);
+
+        addInfoToJsonFile(msg)
+
         return win
     }
 

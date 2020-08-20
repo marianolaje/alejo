@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cuantityText: {
         paddingLeft: 26,
+        paddingTop: 10,
         fontSize: 40,
         marginTop: '0px',
         fontWeight: 900,

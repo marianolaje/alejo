@@ -50,6 +50,7 @@ const getInformation = () => {
                     url: metadata.url,
                     content: content ? content : "No content given",
                     notaFinal: metadata.notaFinal ? metadata.notaFinal : null,
+                    notaFinalDos: metadata.notaFinalDos ? metadata.notaFinalDos : null,
                     score: metadata.score
                 }
                 informationList.push(post)

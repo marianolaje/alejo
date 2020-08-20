@@ -112,6 +112,7 @@ const Informacion = ({infoData, setCompra, compra}) => {
                                     {listComponent()}
                                 </ul>
                                 <h5>{info.notaFinal}</h5>
+                                <h5>{info.notaFinalDos}</h5>
                             </div>
                         )
                     }
