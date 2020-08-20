@@ -9,6 +9,7 @@ import {ThemeProvider} from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        backgroundColor: '#ebebeb',
         zIndex: '99999',
         width: '100%',
         flexWrap: 'wrap',
@@ -27,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
     },
     imagen: {
         width: 20,
-        height: 20
+        height: 20,
+        backgroundColor: '#ebebeb',
     },
     volver: {
         position: 'fixed',
@@ -57,7 +59,7 @@ const Volver = ({setInfoBool}) => {
     }
 
     return(
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme} className={classes.root}>
             <div className={classes.volver}>
                 <Paper elevation={2}
                        className={classes.root}
