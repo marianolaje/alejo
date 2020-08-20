@@ -1,5 +1,6 @@
 ---
 title: Bolsón Completo
+imageOne: /images/bolsones-completo.png
 price: 650
 url: /bolsón-completo
 ---
