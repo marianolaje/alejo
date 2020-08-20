@@ -12,10 +12,10 @@ import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 const useStyles = makeStyles((theme) => ({
     cuantity: {
         width: '70px',
-        height: '60px',
+        height: '70px',
         position: 'fixed',
         bottom: 30,
-        left: 20,
+        left: 100,
         backgroundColor: '#ebebeb',
     },
     cuantityText: {
@@ -29,21 +29,21 @@ const useStyles = makeStyles((theme) => ({
         height: '28px',
         position: 'fixed',
         bottom: 62,
-        left: 95,
+        left: 175,
     },
     minus: {
         width: '28px',
         height: '28px',
         position: 'fixed',
         bottom: 30,
-        left: 95
+        left: 175
     },
     total: {
         width: '104px',
         height: '28px',
         position: 'fixed',
         bottom: 80,
-        left: 0,
+        left: 80,
         paddingLeft: 20,
         fontSize: 30,
         fontWeight: 900,
