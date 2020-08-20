@@ -142,7 +142,6 @@ const Formulario = ({compraReal}) => {
 
         let win = window.open(`https://wa.me/${num}?text=${msg}`);
 
-        addInfoToJsonFile(msg)
 
         return win
     }
