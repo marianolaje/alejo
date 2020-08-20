@@ -101,7 +101,7 @@ const Formulario = ({compraReal}) => {
     function sendMessage () {
         let pedido = ''
         pedido = compraReal.map(text => (pedido.concat(text.cuantity).concat(' del ').concat(text.title).concat(', ')))
-        let num = '+4915172157578'
+        let num = '5493513088140'
         let msg = `Buenos dias, soy ${search.nombre} ${search.apellido}. 
                     Quisiera pedir ${pedido.join('')}.
                     Vivo en ${search.direccion}, y pagaré con ${search.formaPago}.
