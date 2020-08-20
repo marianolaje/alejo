@@ -6,6 +6,7 @@ import {ThemeProvider} from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
+import Calculadora from "./Calculadora";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -67,7 +68,7 @@ const theme = createMuiTheme({
     },
 });
 
-const Informacion = ({infoData}) => {
+const Informacion = ({infoData, setCompra, compra}) => {
     const classes = useStyles();
     let location = useLocation()
 
@@ -123,6 +124,11 @@ const Informacion = ({infoData}) => {
                     }
                 </Paper>
             </Container>
+            <Calculadora
+                info={info}
+                setCompra={setCompra}
+                compra={compra}
+            />
         </ThemeProvider>
 
     )

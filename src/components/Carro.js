@@ -9,6 +9,7 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        backgroundColor: '#ebebeb',
         zIndex: '99999',
         width: '100%',
         flexWrap: 'wrap',
@@ -46,24 +47,29 @@ const theme = createMuiTheme({
     },
 });
 
-const Carro = ({setGoCarro}) => {
+const Carro = ({setGoCarro, setMostrarMensaje, compra}) => {
     const classes = useStyles();
 
     const history = useHistory()
 
     const goBackButton = () => {
-        history.push('/cart')
-        setGoCarro(true)
+        console.log(compra.find(a => a.cuantity>0))
+        if (compra.find(a => a.cuantity>0) === undefined) {
+            setMostrarMensaje(true)
+        } else {
+            history.push('/cart')
+            setGoCarro(true)
+        }
     }
 
     return(
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme} className={classes.root}>
             <div className={classes.volvers}>
                 <Paper elevation={2}
                        className={classes.root}
                        onClick={goBackButton}
                 >
-                    <SvgIcon component={ShoppingCartIcon} style={{ color: '#D7263D' }} className={classes.imagens} />
+                    <SvgIcon component={ShoppingCartIcon} style={{ color: '#D7263D', backgroundColor: '#ebebeb' }} className={classes.imagens} />
                 </Paper>
             </div>
         </ThemeProvider>

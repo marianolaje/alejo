@@ -15,6 +15,7 @@ import Compra from './components/Compra'
 import infoDataJson from './mocks/information.json'
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {createStyles} from "@material-ui/core";
+import Mensaje from "./components/Mensaje";
 
 const useStyles = makeStyles(theme => createStyles({
     responseContainer: {
@@ -66,10 +67,23 @@ function App() {
     const [title, setTitle] = useState({})
     const [realUrl, setRealUrl] = useState(true)
     const [goCarro, setGoCarro] = useState(false)
+    const [compra, setCompra] = useState([])
+    const [mostrarMensaje, setMostrarMensaje] = useState(false)
 
     useEffect(()=>{
         setInfoData(infoDataJson)
+        let a = []
+        if(infoData.length>0){
+            infoData.map(row => a.push({id: row.id, cuantity: 0, price: row.price, title: row.title}))
+        }
+        setCompra(a)
     }, [infoData])
+
+    useEffect(()=>{
+        setTimeout(function(){
+            setMostrarMensaje(false)
+        }, 3000)
+    }, [mostrarMensaje])
 
 
     return (
@@ -90,7 +104,7 @@ function App() {
                 <Switch>
                     <Route exact path="/cart">
                         <Compra
-                            infoData={infoData}
+                            compra={compra}
                         />
                     </Route>
                     <Route path="/">
@@ -98,6 +112,8 @@ function App() {
                             infoBool && realUrl && !goCarro && (
                                 <Informacion
                                     infoData={infoData}
+                                    setCompra={setCompra}
+                                    compra={compra}
                                 />
                             )
                         }
@@ -114,10 +130,17 @@ function App() {
                 </Switch>
                 <Carro
                     setGoCarro={setGoCarro}
+                    setMostrarMensaje={setMostrarMensaje}
+                    compra={compra}
                 />
                 <Volver
                     setInfoBool={setInfoBool}
                 />
+                {
+                    mostrarMensaje && (
+                        <Mensaje/>
+                    )
+                }
             </Router>
         </div>
 
