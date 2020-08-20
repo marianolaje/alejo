@@ -4,7 +4,7 @@ icon: /images/pagos.png
 imageOne: /images/bolsones-power.png
 price: 850
 url: /bolsón-power
-notaFinal: Bolsón de 12 kg. aproximadamente., Foto a modo de ejemplo ya que
+notaFinal: Bolsón de 12 kg. aproximadamente. Foto a modo de ejemplo ya que
   cambia todas las semanas su contenido.
 score: 7
 ---
