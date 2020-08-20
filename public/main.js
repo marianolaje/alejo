@@ -44,7 +44,6 @@ const getInformation = () => {
                 post = {
                     id: Math.floor(Math.random() * 100000000000),
                     title: metadata.title,
-                    icon: metadata.icon ? metadata.icon : null,
                     imageOne: metadata.imageOne ? metadata.imageOne : null,
                     price: metadata.price,
                     url: metadata.url,
