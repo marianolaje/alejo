@@ -63,6 +63,7 @@ const useStyles = makeStyles(theme => createStyles({
 }));
 
 function App() {
+    const classes = useStyles()
 
     const classes = useStyles()
 
