@@ -8,6 +8,7 @@ import {ThemeProvider} from "@material-ui/styles";
 import Error from './Error'
 import MenuItem from "@material-ui/core/MenuItem";
 import Pedidos from '../mocks/pedidos.json'
+import firebase from "../firebase";
 
 const theme = createMuiTheme({
     typography: {
@@ -74,7 +75,7 @@ const currencies = [
     },
 ];
 
-const Formulario = ({compraReal}) => {
+const Formulario = ({compraReal, total}) => {
     const classes = useStyles();
 
     const [search, setSearch] = useState({
@@ -88,22 +89,14 @@ const Formulario = ({compraReal}) => {
     const [error, setError] = useState(true)
     const [errorMessage, setErrorMessage] = useState(null)
 
+    console.log(compraReal)
+    console.log(search)
+
     const handleChange = e => {
         setSearch({
             ...search,
             [e.target.name]: e.target.value
         })
-    }
-
-    function addInfoToJsonFile (msg) {
-        let obj = {
-            table: []
-        };
-        obj.table.push({msg});
-        let json = JSON.stringify(obj);
-        let fs = require('fs');
-        fs.writeFile('../mocks/pedidos.json', json);
-
     }
 
     function sendMessage () {
@@ -142,6 +135,16 @@ const Formulario = ({compraReal}) => {
 
         let win = window.open(`https://wa.me/${num}?text=${msg}`);
 
+        firebase.firestore().collection('compras').add({
+            nombre: search.nombre,
+            apellido: search.apellido,
+            direccion: search.direccion,
+            email: search.email,
+            formaPago: search.formaPago,
+            total: total,
+            comentario: search.comentario,
+            pedido: compraReal
+        })
 
         return win
     }

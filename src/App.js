@@ -11,11 +11,13 @@ import Informacion from './components/Informacion'
 import Carro from './components/Carro'
 import Volver from './components/Volver'
 import Compra from './components/Compra'
-
+import GoogleSheetsProvider from 'react-db-google-sheets';
 import infoDataJson from './mocks/information.json'
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {createStyles} from "@material-ui/core";
 import Mensaje from "./components/Mensaje";
+import firebase from "./firebase.js";
+import Comprados from "./components/Comprados";
 
 const useStyles = makeStyles(theme => createStyles({
     responseContainer: {
@@ -73,6 +75,7 @@ function App() {
     const [goCarro, setGoCarro] = useState(false)
     const [compra, setCompra] = useState([])
     const [mostrarMensaje, setMostrarMensaje] = useState(false)
+    const [total, setTotal] = useState(0)
 
     useEffect(()=>{
         setInfoData(infoDataJson)
@@ -100,71 +103,72 @@ function App() {
 
 
     return (
-        <div className={classes.margenBot}>
-            <Router >
-                <HeaderComp
-                    setInfoBool={setInfoBool}
-                />
+        <GoogleSheetsProvider>
+            <div className={classes.margenBot}>
+                <Router >
+                    <HeaderComp
+                        setInfoBool={setInfoBool}
+                    />
 
-                <TitleSection
-                    infoData={infoData}
-                    title={title}
-                    setTitle={setTitle}
-                    setInfoBool={setInfoBool}
-                    setRealUrl={setRealUrl}
-                    setGoCarro={setGoCarro}
-                />
-                <Switch>
-                    <Route exact path="/cart">
-                        <Compra
-                            compra={compra}
-                        />
-                    </Route>
-                    <Route path="/">
-                        {
-                            infoBool && realUrl && !goCarro && (
-                                <Informacion
-                                    infoData={infoData}
-                                    setCompra={setCompra}
-                                    compra={compra}
-                                />
-                            )
-                        }
-                        {
-                            infoData && !infoBool && realUrl && !goCarro && (
-                                <Productos
-                                    infoData={infoData}
-                                    setInfoBool={setInfoBool}
-                                    setInfoRow={setInfoRow}
-                                />
-                            )
-                        }
-                    </Route>
-                </Switch>
-                <Carro
-                    setGoCarro={setGoCarro}
-                    setMostrarMensaje={setMostrarMensaje}
-                    compra={compra}
-                />
-                <Volver
-                    setInfoBool={setInfoBool}
-                />
-                {
-                    mostrarMensaje && (
-                        <Mensaje/>
-                    )
-                }
-            </Router>
-        </div>
-
+                    <TitleSection
+                        infoData={infoData}
+                        title={title}
+                        setTitle={setTitle}
+                        setInfoBool={setInfoBool}
+                        setRealUrl={setRealUrl}
+                        setGoCarro={setGoCarro}
+                    />
+                    <Switch>
+                        <Route exact path="/cart">
+                            <Compra
+                                compra={compra}
+                                total={total}
+                            />
+                        </Route>
+                        <Route exact path="/comprados">
+                            <Comprados/>
+                        </Route>
+                        <Route path="/">
+                            {
+                                infoBool && realUrl && !goCarro && (
+                                    <Informacion
+                                        infoData={infoData}
+                                        setCompra={setCompra}
+                                        compra={compra}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                )
+                            }
+                            {
+                                infoData && !infoBool && realUrl && !goCarro && (
+                                    <Productos
+                                        infoData={infoData}
+                                        setInfoBool={setInfoBool}
+                                        setInfoRow={setInfoRow}
+                                    />
+                                )
+                            }
+                        </Route>
+                    </Switch>
+                    <Carro
+                        setGoCarro={setGoCarro}
+                        setMostrarMensaje={setMostrarMensaje}
+                        compra={compra}
+                    />
+                    <Volver
+                        setInfoBool={setInfoBool}
+                    />
+                    {
+                        mostrarMensaje && (
+                            <Mensaje/>
+                        )
+                    }
+                </Router>
+            </div>
+        </GoogleSheetsProvider>
     );
 
 }
 
 export default App;
-
-
-//TODO:
-// - Agregar el componente de Compra (entero, con formulario y envío de información)
-// - Agregar el botón para sumar items al carro en componente Información
-// - Arreglar la medida (kg - g) en Información, para que se imprima de manera correcta

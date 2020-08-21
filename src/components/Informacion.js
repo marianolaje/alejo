@@ -68,7 +68,7 @@ const theme = createMuiTheme({
     },
 });
 
-const Informacion = ({infoData, setCompra, compra}) => {
+const Informacion = ({infoData, setCompra, compra, total, setTotal}) => {
     const classes = useStyles();
     let location = useLocation()
 
@@ -132,6 +132,8 @@ const Informacion = ({infoData, setCompra, compra}) => {
                 info={info}
                 setCompra={setCompra}
                 compra={compra}
+                total={total}
+                setTotal={setTotal}
             />
         </ThemeProvider>
 

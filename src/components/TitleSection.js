@@ -104,6 +104,9 @@ const TitleSection = ({title, setTitle, infoData, setInfoBool, setRealUrl, setGo
         else if(url === '/cart'){
             setRealUrl(true)
         }
+        else if(url === '/comprados'){
+            setRealUrl(true)
+        }
         else {
             setTitle({title: "La URL ingresada no existe."})
             setRealUrl(false)

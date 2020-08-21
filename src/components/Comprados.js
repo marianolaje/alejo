@@ -72,79 +72,50 @@ const theme = createMuiTheme({
     },
 });
 
-const Calculadora = ({info, setCompra, compra, total, setTotal}) => {
-    const classes = useStyles();
-    let location = useLocation()
+const Comprados = () => {
 
-    const [cuantityState, setCuantityState] = useState(0)
+    let classes = useStyles()
+
+    const [info, setInfo] = useState([])
 
     useEffect(()=>{
-        let a = compra.find(item => item.id === info.id)
-        if(a){
-            setCuantityState(a.cuantity)
-        }
+        firebase
+            .firestore()
+            .collection('compras')
+            .onSnapshot((snapshot) => {
+                const newTimes = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+                setInfo(newTimes)
+            })
+    }, [])
 
-        if(cuantityState===0){
-            setTotal(0)
-        } else {
-            setTotal(cuantityState * info.price)
-        }
-    }, [cuantityState, info])
-
-    const addOne = () => {
-        let response = compra
-
-        let a = response.find(row => row.id === info.id)
-        a.cuantity = cuantityState + 1
-
-        setCuantityState(cuantityState + 1)
-        console.log(total)
-
-    }
-
-    console.log(total)
-
-    const restOne = () => {
-        if(cuantityState<=0){
-            return
-        } else {
-            let response = compra
-            let a = response.find(row => row.id === info.id)
-            a.cuantity = cuantityState - 1
-            setCompra(response)
-            setCuantityState(cuantityState - 1)
-        }
-    }
+    console.log(info)
 
     return (
         <ThemeProvider theme={theme}>
             <Container maxWidth="sm">
+                {info.length !== 0 && (
+                    info.map(row => (
+                        <Paper elevation={0}
+                        >
+                            <p>{row.nombre}</p>
+                        </Paper>
+                    ))
+                )}
 
-                <Paper elevation={0}
-                       className={classes.cuantity}
-                >
-                    <p className={classes.cuantityText}>{cuantityState}</p>
-                </Paper>
 
                 <IconButton edge="end" aria-label="delete" className={classes.plus}>
                     <PlusOneIcon
                         color="primary"
-                        onClick={addOne}
                     />
                 </IconButton>
 
-                <IconButton edge="end" aria-label="delete" className={classes.minus}>
-                    <ExposureNeg1Icon
-                        color="primary"
-                        onClick={restOne}
-                    />
-                </IconButton>
-
-                <p className={classes.total}>${total}</p>
             </Container>
         </ThemeProvider>
 
     )
 }
 
-export default Calculadora
+export default Comprados

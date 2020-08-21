@@ -70,7 +70,7 @@ const theme = createMuiTheme({
     },
 });
 
-const Compra = ({compra}) => {
+const Compra = ({compra, total}) => {
     const [compraReal, setCompraReal] = useState([])
     const [totalPagar, setTotalPagar] = useState([])
 
@@ -110,6 +110,7 @@ const Compra = ({compra}) => {
 
                 <Formulario
                     compraReal={compraReal}
+                    total={total}
                 />
             </Container>
         </ThemeProvider>
