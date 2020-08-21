@@ -104,7 +104,7 @@ const TitleSection = ({title, setTitle, infoData, setInfoBool, setRealUrl, setGo
         else if(url === '/cart'){
             setRealUrl(true)
         }
-        else if(url === '/comprados'){
+        else if(url === '/comprados-darla'){
             setRealUrl(true)
         }
         else {

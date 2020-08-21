@@ -99,6 +99,16 @@ const Formulario = ({compraReal, total}) => {
         })
     }
 
+    let fechaPedido = () => {
+        let resultado
+        let a = new Date().getDate()
+        let b = new Date().getMonth()
+        let c= new Date().getFullYear()
+        resultado = a + '/' + b + '/' + c
+        return(resultado)
+    }
+    fechaPedido()
+
     function sendMessage () {
         let pedido = ''
         pedido = compraReal.map(text => (pedido.concat(text.cuantity).concat(' del ').concat(text.title).concat(', ')))
@@ -136,6 +146,7 @@ const Formulario = ({compraReal, total}) => {
         let win = window.open(`https://wa.me/${num}?text=${msg}`);
 
         firebase.firestore().collection('compras').add({
+            fecha: fechaPedido(),
             nombre: search.nombre,
             apellido: search.apellido,
             direccion: search.direccion,

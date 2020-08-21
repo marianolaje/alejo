@@ -110,7 +110,7 @@ const Compra = ({compra, total}) => {
 
                 <Formulario
                     compraReal={compraReal}
-                    total={total}
+                    total={totalPagar}
                 />
             </Container>
         </ThemeProvider>

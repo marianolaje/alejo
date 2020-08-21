@@ -125,7 +125,7 @@ function App() {
                                 total={total}
                             />
                         </Route>
-                        <Route exact path="/comprados">
+                        <Route exact path="/comprados-darla">
                             <Comprados/>
                         </Route>
                         <Route path="/">

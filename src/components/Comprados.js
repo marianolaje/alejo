@@ -46,14 +46,11 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 650,
     },
     total: {
-        width: '104px',
-        height: '28px',
-        position: 'fixed',
-        bottom: 80,
-        left: 80,
+        width: '354px',
+        height: '60px',
         paddingLeft: 20,
         fontSize: 30,
-        fontWeight: 900,
+        fontWeight: 400,
         color: 'black'
     },
 }));
@@ -82,6 +79,7 @@ const Comprados = () => {
     let classes = useStyles()
 
     const [info, setInfo] = useState([])
+    const [totalCobrar, setTotalCobrar] = useState(0)
 
     useEffect(()=>{
         firebase
@@ -96,6 +94,10 @@ const Comprados = () => {
             })
     }, [])
 
+    useEffect(()=>{
+        funcionCobrar()
+    }, [info])
+
     const eliminarDato = (id) => {
         firebase
             .firestore()
@@ -109,7 +111,11 @@ const Comprados = () => {
         });
     }
 
-    console.log(info)
+    const funcionCobrar = () => {
+        let i = 0
+        info.forEach(row => i = i + row.total)
+        setTotalCobrar(i)
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -118,6 +124,7 @@ const Comprados = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Eliminar</TableCell>
+                            <TableCell align="right">Fecha</TableCell>
                             <TableCell align="right">Nombre</TableCell>
                             <TableCell align="right">Apellido</TableCell>
                             <TableCell align="right">Direccion</TableCell>
@@ -146,6 +153,7 @@ const Comprados = () => {
                                             />
                                         </Icon>
                                     </TableCell>
+                                    <TableCell align="right">{row.fecha}</TableCell>
                                     <TableCell align="right">{row.nombre}</TableCell>
                                     <TableCell align="right">{row.apellido}</TableCell>
                                     <TableCell align="right">{row.direccion}</TableCell>
@@ -168,6 +176,14 @@ const Comprados = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <div>
+                <Paper
+                    elevation={0}
+                    className={classes.total}>
+                    <p>Total por cobrar: $ {totalCobrar}
+                    </p>
+                </Paper>
+            </div>
         </ThemeProvider>
 
     )
