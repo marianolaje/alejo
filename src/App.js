@@ -18,6 +18,7 @@ import {createStyles} from "@material-ui/core";
 import Mensaje from "./components/Mensaje";
 import firebase from "./firebase.js";
 import Comprados from "./components/Comprados";
+import BotonSecreto from "./components/BotonSecreto";
 
 const useStyles = makeStyles(theme => createStyles({
     responseContainer: {
@@ -147,6 +148,11 @@ function App() {
                                         setInfoBool={setInfoBool}
                                         setInfoRow={setInfoRow}
                                     />
+                                )
+                            }
+                            {
+                                infoData && !infoBool && realUrl && !goCarro && (
+                                    <BotonSecreto/>
                                 )
                             }
                         </Route>
