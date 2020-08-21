@@ -1,14 +1,17 @@
-import React, {useEffect, useState} from 'react'
-import {useLocation} from "react-router-dom";
+import React, {Fragment, useEffect, useState} from 'react'
 import {makeStyles} from '@material-ui/core/styles';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
-import PlusOneIcon from '@material-ui/icons/PlusOne';
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
-import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 import * as firebase from "firebase";
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
     cuantity: {
@@ -39,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         bottom: 30,
         left: 175
+    },  table: {
+        minWidth: 650,
     },
     total: {
         width: '104px',
@@ -91,28 +96,78 @@ const Comprados = () => {
             })
     }, [])
 
+    const eliminarDato = (id) => {
+        firebase
+            .firestore()
+            .collection("compras")
+            .doc(id)
+            .delete()
+            .then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+    }
+
     console.log(info)
 
     return (
         <ThemeProvider theme={theme}>
-            <Container maxWidth="sm">
-                {info.length !== 0 && (
-                    info.map(row => (
-                        <Paper elevation={0}
-                        >
-                            <p>{row.nombre}</p>
-                        </Paper>
-                    ))
-                )}
+            <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Eliminar</TableCell>
+                            <TableCell align="right">Nombre</TableCell>
+                            <TableCell align="right">Apellido</TableCell>
+                            <TableCell align="right">Direccion</TableCell>
+                            <TableCell align="right">Email</TableCell>
+                            <TableCell align="right">Forma de Pago</TableCell>
+                            <TableCell align="right">Total</TableCell>
+                            <TableCell align="right">Comentario</TableCell>
+                            <TableCell align="right">Producto 1</TableCell>
+                            <TableCell align="right">Cantidad 1</TableCell>
+                            <TableCell align="right">Producto 2</TableCell>
+                            <TableCell align="right">Cantidad 2</TableCell>
+                            <TableCell align="right">Producto 3</TableCell>
+                            <TableCell align="right">Cantidad 3</TableCell>
+                            <TableCell align="right">Producto 4</TableCell>
+                            <TableCell align="right">Cantidad 4</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {info.length !== 0 && (
+                            info.map(row => (
+                                <TableRow key={row.id}>
+                                    <TableCell align="right">
+                                        <Icon>
+                                            <DeleteForeverIcon
+                                                onClick={()=>eliminarDato(row.id)}
+                                            />
+                                        </Icon>
+                                    </TableCell>
+                                    <TableCell align="right">{row.nombre}</TableCell>
+                                    <TableCell align="right">{row.apellido}</TableCell>
+                                    <TableCell align="right">{row.direccion}</TableCell>
+                                    <TableCell align="right">{row.email}</TableCell>
+                                    <TableCell align="right">{row.formaPago}</TableCell>
+                                    <TableCell align="right">{row.total}</TableCell>
+                                    <TableCell align="right">{row.comentario}</TableCell>
+                                    {row.pedido[0] ? <TableCell align="right">{row.pedido[0].title}</TableCell> : <TableCell align="right"> </TableCell>}
+                                    {row.pedido[0] ? <TableCell align="right">{row.pedido[0].cuantity}</TableCell> : <TableCell align="right"> </TableCell>}
+                                    {row.pedido[1] ? <TableCell align="right">{row.pedido[1].title}</TableCell> : <TableCell align="right"> </TableCell>}
+                                    {row.pedido[1] ? <TableCell align="right">{row.pedido[1].cuantity}</TableCell> : <TableCell align="right"> </TableCell>}
+                                    {row.pedido[2] ? <TableCell align="right">{row.pedido[2].title}</TableCell> : <TableCell align="right"> </TableCell>}
+                                    {row.pedido[2] ? <TableCell align="right">{row.pedido[2].cuantity}</TableCell> : <TableCell align="right"> </TableCell>}
+                                    {row.pedido[3] ? <TableCell align="right">{row.pedido[3].title}</TableCell> : <TableCell align="right"> </TableCell>}
+                                    {row.pedido[3] ? <TableCell align="right">{row.pedido[3].cuantity}</TableCell> : <TableCell align="right"> </TableCell>}
 
-
-                <IconButton edge="end" aria-label="delete" className={classes.plus}>
-                    <PlusOneIcon
-                        color="primary"
-                    />
-                </IconButton>
-
-            </Container>
+                                </TableRow>
+                            ))
+                        )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </ThemeProvider>
 
     )
