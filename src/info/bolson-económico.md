@@ -3,7 +3,7 @@ title: Bolsón Frutas
 subtitle: "Bolsón de 6 kg. aproximadamente. "
 price: 450
 url: /bolsón-frutas
-notaFinal: " "
+notaFinal: ""
 notaFinalDos: ""
 score: 0
 ---
