@@ -8,4 +8,4 @@ notaFinal: ""
 notaFinalDos: ""
 score: 0
 ---
-200 gr. FRUTILLA, 1 kg. TOMATE, 500 gr. POMELO, 1 kg. MANDARINA, 1 kg. BANANA, 1.5 kg. NARANJA, 500 gr. MANZANA
+250 gr. FRUTILLA, 500 gr. TOMATE, 1 kg. PERA, 1 kg. MANDARINA, 1 kg. BANANA, 1.5 kg. NARANJA, 500 gr. MANZANA
